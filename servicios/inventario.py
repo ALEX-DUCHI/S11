@@ -75,6 +75,9 @@ class Inventario:
         nombre = nombre.lower()
         return [p for p in self._productos if nombre in p.get_nombre().lower()]
     
+    def productos_bajo_stock(self, minimo: int):
+        return [p for p in self._productos_lista if p.get_cantidad() <= minimo]
+    
     def calcular_valor_total_inventario(self):
         return sum(p.calcular_valor_total() for p in self._productos_lista)
     

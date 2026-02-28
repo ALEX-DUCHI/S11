@@ -10,6 +10,7 @@ def mostrar_menu():
     print("4. Buscar producto")
     print("5. Listar inventario")
     print("6. Salir")
+    print("7. Productos con bajo stock")
     print("8. Valor total del inventario")
 
 
@@ -20,6 +21,12 @@ def main():
     while True:
         mostrar_menu()
         opcion = input("Seleccione una opción: ").strip()
+        elif opcion == "7":
+        minimo = int(input("Stock mínimo: "))
+        productos = inventario.productos_bajo_stock(minimo)
+        for p in productos:
+         print(p)
+         
         elif opcion == "8":
         total = inventario.calcular_valor_total_inventario()
         print(f"💰 Valor total del inventario: ${total:.2f}")
