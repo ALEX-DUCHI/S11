@@ -1,7 +1,12 @@
 class Producto:
     def __init__(self, producto_id: int, nombre: str, cantidad: int, precio: float):
-        self._id = producto_id
-        self._nombre = nombre
+        if cantidad < 0:
+            raise ValueError("La cantidad no puede ser negativa")
+        if precio < 0:
+            raise ValueError("El precio no puede ser negativo")
+        
+        self._id = str(producto_id)
+        self._nombre = nombre.strip()
         self._cantidad = cantidad
         self._precio = precio
 
