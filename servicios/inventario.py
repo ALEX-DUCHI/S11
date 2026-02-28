@@ -4,11 +4,14 @@ from modelos.producto import Producto
 
 class Inventario:
     def __init__(self, archivo="inventario.txt"):
-        self._productos = []
+        self._productos_lista = []
         self._archivo = archivo
         self._cargar_desde_archivo()
+        self._productos_dict = {} 
+        self._nombres = set ()
 
     def _cargar_desde_archivo(self):
+        self._productos_dict[producto.get_id()] = producto
         try:
             if not os.path.exists(self._archivo):
                 open(self._archivo, "w").close()
@@ -39,8 +42,9 @@ class Inventario:
             return False
 
     def agregar_producto(self, producto):
-        if any(p.get_id() == producto.get_id() for p in self._productos):
+        if producto.get_id() in self._productos_dict:
             return False
+        selft._productos_dict[producto.get_id()] = producto
         self._productos.append(producto)
         return self._guardar_en_archivo()
 
