@@ -21,7 +21,8 @@ class Inventario:
                 for linea in f:
                     try:
                         producto = Producto.from_line(linea)
-                        self._productos.append(producto)
+                        self._productos_dict[producto.get_id()] = producto
+                        self._nombres.add(producto.get_nombre().lower())
                     except Exception:
                         continue
         except PermissionError:
@@ -44,9 +45,14 @@ class Inventario:
     def agregar_producto(self, producto):
         if producto.get_id() in self._productos_dict:
             return False
-        selft._productos_dict[producto.get_id()] = producto
+        if producto.get_nombre().lower() in self._nombres:
+            return False
+        self._nombres.add(producto.get_nombre().lower())
+        self._productos_dict[producto.get_id()] = producto
         self._productos.append(producto)
+        
         return self._guardar_en_archivo()
+    
 
     def eliminar_producto(self, producto_id: int):
         for producto in self._productos:
