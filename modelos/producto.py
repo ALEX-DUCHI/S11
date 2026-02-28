@@ -37,6 +37,8 @@ class Producto:
         if precio < 0:
             raise ValueError("El precio no puede ser negativo")
         self._precio = precio
+    def calcular_valor_total(self):
+        return self._cantidad * self._precio
 
     def to_line (self):
         return f"{self._id},{self._nombre},{self._cantidad},{self._precio}\n"

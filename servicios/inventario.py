@@ -74,6 +74,9 @@ class Inventario:
     def buscar_por_nombre(self, nombre: str):
         nombre = nombre.lower()
         return [p for p in self._productos if nombre in p.get_nombre().lower()]
-
+    
+    def calcular_valor_total_inventario(self):
+        return sum(p.calcular_valor_total() for p in self._productos_lista)
+    
     def listar_productos(self):
         return self._productos

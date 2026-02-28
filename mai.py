@@ -10,6 +10,8 @@ def mostrar_menu():
     print("4. Buscar producto")
     print("5. Listar inventario")
     print("6. Salir")
+    print("8. Valor total del inventario")
+
 
 
 def main():
@@ -18,6 +20,9 @@ def main():
     while True:
         mostrar_menu()
         opcion = input("Seleccione una opción: ").strip()
+        elif opcion == "8":
+        total = inventario.calcular_valor_total_inventario()
+        print(f"💰 Valor total del inventario: ${total:.2f}")
 
         if opcion == "1":
             try:
