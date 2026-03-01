@@ -1,5 +1,5 @@
 class Producto:
-    def __init__(self, producto_id: int, nombre: str, cantidad: int, precio: float):
+    def __init__(self, producto_id: str, nombre: str, cantidad: int, precio: float):
         if cantidad < 0:
             raise ValueError("La cantidad no puede ser negativa")
         if precio < 0:
@@ -13,14 +13,8 @@ class Producto:
     def get_id(self):
         return self._id
 
-    def set_id(self, producto_id):
-        self._id = producto_id
-
     def get_nombre(self):
         return self._nombre
-
-    def set_nombre(self, nombre):
-        self._nombre = nombre
 
     def get_cantidad(self):
         return self._cantidad
@@ -40,7 +34,7 @@ class Producto:
     def calcular_valor_total(self):
         return self._cantidad * self._precio
 
-    def to_line (self):
+    def to_line(self):
         return f"{self._id},{self._nombre},{self._cantidad},{self._precio}\n"
     @staticmethod
     def from_line(linea):
